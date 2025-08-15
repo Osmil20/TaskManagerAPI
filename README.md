@@ -6,15 +6,6 @@ Construída com **.NET 6**, **Entity Framework Core** e **SQL Server**.
 ![Swagger UI](./swagger.png)  
 *Interface Swagger mostrando todos os endpoints implementados.*
 
-![POST /Tarefa](./post-tarefa.png)  
-*Exemplo de criação de tarefa via POST.*
-
-![GET /Tarefa/ObterTodos](./get-obter-todos.png)  
-*Exemplo de listagem de todas as tarefas.*
-
-![DELETE /Tarefa/{id}](./delete-tarefa.png)  
-*Exemplo de exclusão de uma tarefa.*
-
 ---
 
 ## Tecnologias Utilizadas
