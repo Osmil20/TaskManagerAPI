@@ -1,49 +1,49 @@
-# DIO - Trilha .NET - API e Entity Framework
-www.dio.me
+# DotNetTaskManager
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de API e Entity Framework, da trilha .NET da DIO.
+API de gerenciamento de tarefas desenvolvida como desafio da **Trilha .NET da DIO**.  
+Construída com **.NET 6**, **Entity Framework Core** e **SQL Server**.
 
-## Contexto
-Você precisa construir um sistema gerenciador de tarefas, onde você poderá cadastrar uma lista de tarefas que permitirá organizar melhor a sua rotina.
+![Swagger UI](./swagger.png)  
+*Interface Swagger mostrando todos os endpoints implementados.*
 
-Essa lista de tarefas precisa ter um CRUD, ou seja, deverá permitir a você obter os registros, criar, salvar e deletar esses registros.
+![POST /Tarefa](./post-tarefa.png)  
+*Exemplo de criação de tarefa via POST.*
 
-A sua aplicação deverá ser do tipo Web API ou MVC, fique a vontade para implementar a solução que achar mais adequado.
+![GET /Tarefa/ObterTodos](./get-obter-todos.png)  
+*Exemplo de listagem de todas as tarefas.*
 
-A sua classe principal, a classe de tarefa, deve ser a seguinte:
+![DELETE /Tarefa/{id}](./delete-tarefa.png)  
+*Exemplo de exclusão de uma tarefa.*
 
-![Diagrama da classe Tarefa](diagrama.png)
+---
 
-Não se esqueça de gerar a sua migration para atualização no banco de dados.
+## Tecnologias Utilizadas
 
-## Métodos esperados
-É esperado que você crie o seus métodos conforme a seguir:
+- C# / .NET 6
+- Entity Framework Core 6
+- SQL Server
+- Swagger (Swashbuckle.AspNetCore)
 
+---
 
-**Swagger**
+## Funcionalidades
 
+- Criar tarefas (POST /Tarefa)  
+- Listar todas as tarefas (GET /Tarefa/ObterTodos)  
+- Buscar tarefas por ID (GET /Tarefa/{id})  
+- Buscar tarefas por título (GET /Tarefa/ObterPorTitulo)  
+- Buscar tarefas por data (GET /Tarefa/ObterPorData)  
+- Buscar tarefas por status (GET /Tarefa/ObterPorStatus)  
+- Atualizar tarefas (PUT /Tarefa/{id})  
+- Deletar tarefas (DELETE /Tarefa/{id})  
 
-![Métodos Swagger](swagger.png)
+---
 
+## Model de Tarefa
 
-**Endpoints**
+Exemplo de JSON:
 
-
-| Verbo  | Endpoint                | Parâmetro | Body          |
-|--------|-------------------------|-----------|---------------|
-| GET    | /Tarefa/{id}            | id        | N/A           |
-| PUT    | /Tarefa/{id}            | id        | Schema Tarefa |
-| DELETE | /Tarefa/{id}            | id        | N/A           |
-| GET    | /Tarefa/ObterTodos      | N/A       | N/A           |
-| GET    | /Tarefa/ObterPorTitulo  | titulo    | N/A           |
-| GET    | /Tarefa/ObterPorData    | data      | N/A           |
-| GET    | /Tarefa/ObterPorStatus  | status    | N/A           |
-| POST   | /Tarefa                 | N/A       | Schema Tarefa |
-
-Esse é o schema (model) de Tarefa, utilizado para passar para os métodos que exigirem
-
-```json
+json
 {
   "id": 0,
   "titulo": "string",
@@ -51,8 +51,38 @@ Esse é o schema (model) de Tarefa, utilizado para passar para os métodos que e
   "data": "2022-06-08T01:31:07.056Z",
   "status": "Pendente"
 }
-```
+
+Como Rodar o Projeto
+
+1. Clone o repositório:
+
+git clone https://github.com/SEU_USUARIO/DotNetTaskManager.git
 
 
-## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+2. Entre na pasta do projeto:
+
+cd DotNetTaskManager
+
+
+3. Configure a Connection String no appsettings.Development.json:
+
+{
+  "ConnectionStrings": {
+    "ConexaoPadrao": "Server=localhost\\SQLEXPRESS;Database=DesafioTarefasDB;Trusted_Connection=True;"
+  }
+}
+
+
+4. Atualize o banco de dados:
+
+dotnet ef database update
+
+
+5. Rode a aplicação:
+
+dotnet run
+
+
+6. Acesse o Swagger:
+
+https://localhost:7295/swagger/index.html
